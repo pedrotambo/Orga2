@@ -9,6 +9,9 @@ all:
 	nasm -f elf64 -g -o sum.o sum.asm
 	gcc -o sum -m64 -g sum.c sum.o
 
+	nasm -f elf64 -g -o neg.o neg.asm
+	gcc -o neg -m64 -g neg.c neg.o
+
 mac:
 	nasm -f macho64 -g ejercicio.asm -o ejercicio.o
 	gcc -c main.c -o main.o

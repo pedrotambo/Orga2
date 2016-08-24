@@ -40,6 +40,9 @@ borrarUltimo:
 	; r12 va a tener siempre la direccion de memoria que apunta al puntero
 	; que tiene la direccion de memoria al proximo nodo
 	lea r12, [rdi + lista_offset_primero]
+	;mov r12, rdi
+
+
 	; Con rbx y r12 nos aseguramos de que tengamos siempre acceso al proximo nodo y 
 	; acceso al puntero que apunta al mismo para poder cambiarlo
 
@@ -51,6 +54,12 @@ borrarUltimo:
 		; No estamos parados en el ultimo elemento
 		; Consigo la direccion de memoria al proximo nodo
 		lea r12, [rbx + nodo_offset_prox]
+		
+		;add rbx, nodo_offset_prox
+		;mov r12, rbx
+		
+		;mov r12, [rbx + nodo_offset_prox]
+
 		mov rbx, [r12]
 
 	borrado:

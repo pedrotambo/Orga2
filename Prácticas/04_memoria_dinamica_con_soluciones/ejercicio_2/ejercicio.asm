@@ -40,6 +40,7 @@ borrarUltimo:
 	
 
 	lea r12, [rdi + offset_primero] 
+	;mov r12, [rdi]
 
 	ciclo:
 		; me fijo si el nodo con el que estoy en rbx es el ultimo
@@ -47,7 +48,14 @@ borrarUltimo:
 		cmp qword[rbx + offset_prox], NULL
 		je borrado
 		; si llego acá, el proximo no es null. Avanzo
-		lea r12, [rbx + offset_prox]
+		
+
+		;lea r12, [rbx + offset_prox] o puedo hacer:
+		add rbx, offset_prox
+		mov r12, rbx
+
+		;mov r12, rbx + 8
+		
 		mov rbx, [r12]
 
 	borrado:
@@ -103,10 +111,6 @@ agregarPrimero:
 	mov [rax + offset_prox], r12 ; apunto el nuevo nodo al primer nodo anterior
 
 	mov [rbx + offset_primero], rax ; hago que la lista comienze en el nuevo nodo
-
-
-
-
 
 
 finAgregar:
